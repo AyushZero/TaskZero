@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace TaskZero
 {
@@ -29,18 +30,23 @@ namespace TaskZero
 
         private void NotchControl_MouseEnter(object sender, MouseEventArgs e)
         {
-            NotchControl.Background = System.Windows.Media.Brushes.DodgerBlue;
+            NotchControl.Background = new SolidColorBrush(Color.FromArgb(128, 0, 0, 0));
         }
 
         private void NotchControl_MouseLeave(object sender, MouseEventArgs e)
         {
             if (!isPanelVisible)
             {
-                NotchControl.Background = System.Windows.Media.Brushes.CornflowerBlue;
+                NotchControl.Background = new SolidColorBrush(Color.FromArgb(128, 0, 0, 0));
             }
         }
 
         private void NotchControl_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ToggleTaskPanel();
+        }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             ToggleTaskPanel();
         }
@@ -68,6 +74,9 @@ namespace TaskZero
                     EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut }
                 };
                 this.BeginAnimation(LeftProperty, leftAnimation);
+
+                // Update notch icon to show close symbol
+                NotchIcon.Data = Geometry.Parse("M 0,0 L 100,100 M 0,100 L 100,0");
             }
             else
             {
@@ -90,6 +99,9 @@ namespace TaskZero
                     EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseIn }
                 };
                 this.BeginAnimation(LeftProperty, leftAnimation);
+
+                // Update notch icon to show triangle
+                NotchIcon.Data = Geometry.Parse("M 0,0 L 10,50 L 0,100 Z");
             }
             isPanelVisible = !isPanelVisible;
         }
