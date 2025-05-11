@@ -20,7 +20,7 @@ namespace TaskZero
             TaskList.ItemsSource = Tasks;
 
             // Position window at the right edge of the screen
-            this.Left = SystemParameters.WorkArea.Width - 20;
+            this.Left = SystemParameters.WorkArea.Width - 15;
             this.Top = (SystemParameters.WorkArea.Height - this.Height) / 2;
             
             // Make sure the window is visible
@@ -76,7 +76,7 @@ namespace TaskZero
                 this.BeginAnimation(LeftProperty, leftAnimation);
 
                 // Update notch icon to show close symbol
-                NotchIcon.Data = Geometry.Parse("M 0,0 L 100,100 M 0,100 L 100,0");
+                NotchIcon.Data = Geometry.Parse("M 0,0 L 15,15 M 0,15 L 15,0");
             }
             else
             {
@@ -100,8 +100,8 @@ namespace TaskZero
                 };
                 this.BeginAnimation(LeftProperty, leftAnimation);
 
-                // Update notch icon to show triangle
-                NotchIcon.Data = Geometry.Parse("M 0,0 L 10,50 L 0,100 Z");
+                // Update notch icon to show trapezoid
+                NotchIcon.Data = Geometry.Parse("M 0,0 L 0,80 L 15,60 L 15,20 Z");
             }
             isPanelVisible = !isPanelVisible;
         }

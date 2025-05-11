@@ -12,18 +12,18 @@
     <Grid>
         <!-- Notch Control -->
         <Border x:Name="NotchControl"
-                Width="20"
-                Height="100"
+                Width="15"
+                Height="80"
                 Background="#80000000"
                 MouseEnter="NotchControl_MouseEnter"
                 MouseLeave="NotchControl_MouseLeave"
                 MouseLeftButtonDown="NotchControl_MouseLeftButtonDown"
                 VerticalAlignment="Center">
             <Path x:Name="NotchIcon" 
-                  Data="M 0,0 L 10,50 L 0,100 Z" 
+                  Data="M 0,0 L 0,80 L 15,60 L 15,20 Z" 
                   Fill="White"
                   Stretch="Uniform"
-                  Margin="5,0"/>
+                  Margin="0"/>
         </Border>
 
         <!-- Task Panel -->
@@ -31,7 +31,7 @@
                 Background="#80000000"
                 Width="300"
                 HorizontalAlignment="Right"
-                Margin="0,0,20,0"
+                Margin="0,0,15,0"
                 Visibility="Collapsed">
             <Grid>
                 <Grid.RowDefinitions>
@@ -46,10 +46,6 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Tasks" 
-                             Foreground="White"
-                             FontSize="24"
-                             Margin="20,20,20,10"/>
                     <Button Grid.Column="1"
                             Content="×"
                             Foreground="White"
@@ -62,39 +58,39 @@
                 </Grid>
 
                 <!-- Task List -->
-                <ScrollViewer Grid.Row="1">
-                    <ItemsControl x:Name="TaskList" Margin="10">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <Border Background="#803E3E42" 
-                                        Margin="0,5" 
-                                        Padding="10"
-                                        CornerRadius="4">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <CheckBox IsChecked="{Binding IsCompleted}" 
-                                                  VerticalAlignment="Center"/>
-                                        <TextBlock Text="{Binding Title}" 
-                                                 Grid.Column="1"
-                                                 Margin="10,0"
-                                                 Foreground="White"
-                                                 VerticalAlignment="Center"/>
-                                        <Button Grid.Column="2"
-                                                Content="×"
-                                                Foreground="White"
-                                                Background="Transparent"
-                                                BorderThickness="0"
-                                                Click="DeleteTask_Click"/>
-                                    </Grid>
-                                </Border>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </ScrollViewer>
+                <ItemsControl x:Name="TaskList" 
+                             Grid.Row="1"
+                             Margin="10">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="#803E3E42" 
+                                    Margin="0,5" 
+                                    Padding="10"
+                                    CornerRadius="4">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox IsChecked="{Binding IsCompleted}" 
+                                              VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding Title}" 
+                                             Grid.Column="1"
+                                             Margin="10,0"
+                                             Foreground="White"
+                                             VerticalAlignment="Center"/>
+                                    <Button Grid.Column="2"
+                                            Content="×"
+                                            Foreground="White"
+                                            Background="Transparent"
+                                            BorderThickness="0"
+                                            Click="DeleteTask_Click"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
 
                 <!-- Add Task -->
                 <Grid Grid.Row="2" Margin="10">
@@ -109,10 +105,12 @@
                             Padding="10"
                             Margin="0,0,10,0"/>
                     <Button Grid.Column="1"
-                            Content="Add"
-                            Background="#80007ACC"
+                            Content="+"
+                            Background="#80404040"
                             Foreground="White"
-                            Padding="15,5"
+                            FontSize="20"
+                            Width="40"
+                            Height="40"
                             Click="AddTask_Click"/>
                 </Grid>
             </Grid>
